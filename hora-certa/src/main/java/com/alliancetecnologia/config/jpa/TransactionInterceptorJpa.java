@@ -6,10 +6,8 @@ import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import com.alliancetecnologia.annotations.TransactionJpa;
 
@@ -17,38 +15,31 @@ import com.alliancetecnologia.annotations.TransactionJpa;
 @TransactionJpa
 public class TransactionInterceptorJpa implements Serializable {
 	
-private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -8802967227479283755L;
+	
 	@Inject
-	private Session session;
+	private EntityManager manager;
 	
 	@AroundInvoke
 	public Object invoke(InvocationContext context) throws Exception {
-		
-		Transaction transaction = session.beginTransaction();
-		
+		EntityTransaction transaction = manager.getTransaction();
 		try {
 			
-			if(!transaction.getStatus().equals(TransactionStatus.ACTIVE)) {
-				
+			if(!transaction.isActive()) {
 				// Truque para fazer o rollbach no que ja passou, senão um futuro commit confirmaria até operações sem transações
 				transaction.begin();
 				transaction.rollback();
 				
 				transaction.begin();
-				
 			}
-			
 			return context.proceed();
-			
 		} catch(Exception e) {
-			if(transaction != null && transaction.getStatus().equals(TransactionStatus.ACTIVE)) {
+			if(transaction != null && transaction.isActive()) {
 				transaction.rollback();
 			}
-			
 			throw e;
 		} finally {
-			if(transaction != null && transaction.getStatus().equals(TransactionStatus.ACTIVE)) {
+			if(transaction != null && transaction.isActive()) {
 				transaction.commit();
 			}
 		}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<meta charset="utf-8" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+
+	<h:form>
+	
+	<p:ajaxStatus onstart="PF('dialog-status').show()" oncomplete="PF('dialog-status').hide()"
+		onerror="PF('dialog-status').hide()" onsuccess="PF('dialog-status').hide()" />
+	<p:dialog modal="true" closable="false" minimizable="false"
+		maximizable="false" closeOnEscape="false" resizable="false"
+		id="dialog-status" widgetVar="dialog-status" styleClass="dialog-status">
+	
+		<h2>Aguarde...</h2>
+	
+	</p:dialog>
+	
+    <p:menubar styleClass="menu-bar">
+        <p:menuitem value="Inicio" outcome="/index" />
+        <p:submenu label="Cadastro">
+                <p:menuitem value="Novo Funcionário" outcome="/cadastro/novoFuncionario" />
+                <p:menuitem value="Pesquisar Funcionário" outcome="/cadastro/pesquisarFuncionario" />   
+        </p:submenu>
+ 
+        <p:submenu label="Registros">
+            <p:menuitem value="Registrar ponto" outcome="/registros/registrarPonto" />
+            <p:menuitem value="Pesquisar registros" />
+        </p:submenu>
+      </p:menubar>
+    </h:form>
+    
+    <div class="content">
+	    <ui:insert name="content">    
+	    </ui:insert>
+    </div>
+    
+<h:outputScript library="js" name="app.js" />
+</h:body>
+</html>
