@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.alliancetecnologia.controler;
+package com.alliancetecnologia.controller;
 
 import java.time.LocalDate;
 
