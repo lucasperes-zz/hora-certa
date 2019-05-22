@@ -27,6 +27,10 @@
 					<h:outputText value="Funcionários Cadastrados no Sistema" />
 				</f:facet>
 				
+				<p:column headerText="Código" width="100" filterBy="#{func.codigo}">
+					<h:outputText value="#{func.codigo}" />
+				</p:column>
+				
 				<p:column headerText="Nome" width="250" filterBy="#{func.nome}">
 					<h:outputText value="#{func.nome}" />
 				</p:column>

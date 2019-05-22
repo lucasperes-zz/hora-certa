@@ -30,7 +30,7 @@ public class RegistroPontoModel {
 	private Integer codigo;
 	@ManyToOne
 	@JoinColumn(name = "CODIGO_FUNCIONARIO")
-	private FuncionarioModel codigoFuncionario;
+	private FuncionarioModel funcionario;
 	@Column(name = "DATA_MOVIMENTO")
 	private LocalDate dataMovimento;
 	@Column(name = "HORA_ENTRADA")
@@ -42,11 +42,11 @@ public class RegistroPontoModel {
 	@Column(name = "HORA_SAIDA")
 	private LocalTime horaSaida;
 	@Column(name = "HORAS_TRABALHADAS")
-	private LocalTime horasTrabalhadas;
+	private Integer horasTrabalhadas;
 	@Column(name = "HORAS_EXTRAS")
-	private LocalTime horasExtras;
+	private Integer horasExtras;
 	@Column(name = "BANCO_HORAS")
-	private LocalTime bancoHoras;
+	private Integer bancoHoras;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -54,9 +54,21 @@ public class RegistroPontoModel {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}	
+
+	/**
+	 * @return the funcionario
+	 */
+	public FuncionarioModel getFuncionario() {
+		return funcionario;
 	}
 
-	
+	/**
+	 * @param funcionario the funcionario to set
+	 */
+	public void setFuncionario(FuncionarioModel funcionario) {
+		this.funcionario = funcionario;
+	}
 
 	public LocalDate getDataMovimento() {
 		return dataMovimento;
@@ -98,27 +110,27 @@ public class RegistroPontoModel {
 		this.horaSaida = horaSaida;
 	}
 
-	public LocalTime getHorasTrabalhadas() {
+	public Integer getHorasTrabalhadas() {
 		return horasTrabalhadas;
 	}
 
-	public void setHorasTrabalhadas(LocalTime horasTrabalhadas) {
+	public void setHorasTrabalhadas(Integer horasTrabalhadas) {
 		this.horasTrabalhadas = horasTrabalhadas;
 	}
 
-	public LocalTime getHorasExtras() {
+	public Integer getHorasExtras() {
 		return horasExtras;
 	}
 
-	public void setHorasExtras(LocalTime horasExtras) {
+	public void setHorasExtras(Integer horasExtras) {
 		this.horasExtras = horasExtras;
 	}
 
-	public LocalTime getBancoHoras() {
+	public Integer getBancoHoras() {
 		return bancoHoras;
 	}
 
-	public void setBancoHoras(LocalTime bancoHoras) {
+	public void setBancoHoras(Integer bancoHoras) {
 		this.bancoHoras = bancoHoras;
 	}
 

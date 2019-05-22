@@ -4,6 +4,7 @@
 package com.alliancetecnologia.utils;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
 
@@ -30,6 +31,9 @@ public class DateUtils {
 		if(date != null) {
 			if(date instanceof LocalDate) {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constantes.PATTERN_DATE_BRAZILLIAN);
+				result = formatter.format(date);
+			} else if(date instanceof LocalDateTime) {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constantes.PATTERN_DATE_TIME_BRAZILLIAN);
 				result = formatter.format(date);
 			}
 		}

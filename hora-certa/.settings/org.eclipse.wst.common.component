@@ -9,11 +9,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
                 
         <property name="context-root" value="hora-certa"/>
-                
         <property name="java-output-path" value="/hora-certa/target/classes"/>
             
     </wb-module>

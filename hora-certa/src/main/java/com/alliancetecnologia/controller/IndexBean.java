@@ -7,9 +7,7 @@ import java.time.LocalDate;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
 
 import com.alliancetecnologia.utils.DateUtils;
 
@@ -24,10 +22,8 @@ public class IndexBean extends AbstractController {
 
 	private static final long serialVersionUID = 7299979927346179846L;
 	
-	@Inject
-	private EntityManager manager;
-	
 	private String data;
+	private String versao = "1.0.0";
 	
 	/**
 	 * 
@@ -46,6 +42,13 @@ public class IndexBean extends AbstractController {
 	 */
 	public String getData() {
 		return data;
+	}
+
+	/**
+	 * @return the versao
+	 */
+	public String getVersao() {
+		return versao;
 	}
 	
 }

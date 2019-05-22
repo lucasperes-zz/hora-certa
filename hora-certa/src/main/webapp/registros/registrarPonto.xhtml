@@ -4,46 +4,41 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-	
-<ui:define name="content">
-    
-     <p:panelGrid columns="4">
 
-        
-            <h:outputLabel value="Codigo Funcionário:" />
-            <p:inputText  required="true" />
- 
-            <p:outputLabel value="Data Movimento:" />
-            <p:inputText  required="true" />
-            
-             <p:outputLabel value="Hora Entrada:" />
-            <p:inputText  required="true" />
-            
-             <p:outputLabel value="Hora saída almoço:" />
-            <p:inputText  required="true" />
-            
-             <p:outputLabel value="Hora retorno almoço:" />
-            <p:inputText  required="true" />
-            
-             <p:outputLabel value="Hora saída:" />
-            <p:inputText  required="true" />
-            
-           <p:outputLabel value="Hora saída:" />
-            <p:inputText  required="true" />
-            
-             <p:outputLabel value="Horas trabalhadas:" />
-            <p:inputText  required="true" />
-            
-            
-            <p:outputLabel value="Horas Extras:" />
-            <p:inputText  required="true" />
-            
-            <p:outputLabel value="Banco horas:" />
-            <p:inputText  required="true" />
- 
- 
-            </p:panelGrid>
-   </ui:define>
-	
+
+	<ui:define name="content">
+
+		<h:form>
+			<p:growl id="messages" life="10000" />
+			
+			<p:button value="Pesquisar Registros" style="margin-bottom: 10px;"
+					outcome="/registros/pesquisarRegistros" />
+					
+			<p:button value="Pesquisar Funcionários" style="margin-bottom: 10px; margin-left: 10px;"
+					outcome="/cadastro/pesquisarFuncionario" />
+					
+			<p:panelGrid columns="4">
+
+				<p:outputLabel value="Codigo Funcionário:" for="codigo" />
+				<p:inputText id="codigo" required="true" type="number"
+					value="#{registroPontoBean.codigo}" maxlength="10" />
+
+				<p:outputLabel value="Tipo Registro:" for="tipo-registro" />
+				<p:selectOneMenu id="tipo-registro" required="true"
+					value="#{registroPontoBean.tipoRegistroSelecionado}">
+
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+					<f:selectItems value="#{registroPontoBean.tiposRegistros}" var="item"
+						itemLabel="#{item.descricao}" itemValue="#{item}" />
+
+				</p:selectOneMenu>
+
+				<p:commandButton value="Registrar Ponto" process="@form"
+					update="@form" action="#{registroPontoBean.registrarPonto()}" />
+			</p:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+
 </ui:composition>

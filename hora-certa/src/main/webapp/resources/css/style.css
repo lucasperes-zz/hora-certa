@@ -15,3 +15,8 @@ html, body {
 .content {
 	padding: 20px;
 }
+
+/* Primefaces */
+.ui-growl-message {
+	font-size: 13px !important;
+}

@@ -12,6 +12,7 @@ public class Constantes {
 
 	// PATTERNS
 	public static final String PATTERN_DATE_BRAZILLIAN = "dd/MM/yyyy";
+	public static final String PATTERN_DATE_TIME_BRAZILLIAN = "dd/MM/yyyy HH:mm";
 	
 	// REGEX
 	public static final String REGEX_DATE_BRAZILLIAN = "[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}";
